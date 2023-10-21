@@ -1,0 +1,55 @@
+
+---- Patient ---
+
+=concatenate("insert into ", A2, "(", "PatID,", " FirstName,", " LastName,", " DoB,", " Street,", " City,", " State,", " ZipCode,", " PhoneNo,", " EmailAddress", ")", " values (", B2, ", ", "'"& C2 &"'", " ,", "'"& D2 &"'", ",", "'"& TEXT(E2, "yyyy-mm-dd") &"'", ", ", "'"& F2 &"'", ", ", "'"& G2 &"'", ", ", "'"& H2 &"'", ",", I2, ",", J2, ", ", "'"& K2 &"'", ");")
+
+---- DiagnosisDetails ---
+
+
+=concatenate("insert into DiagnosisDetails",  "(", "DxCode,", " DxName)" ," values (", A2, ", ", "'"& B2 &"'",");")
+
+---- PatientDemographics ---
+
+=concatenate("insert into PatientDemographics",  "(", "PatID,", " Gender,", " Race,", " Ethnicity,", " MaritalStatus,", " EmploymentStatus)" ," values (", A2, ", ", "'"& B2 &"'", ",", "'"& C2 &"'", ", ", "'"& D2 &"'", ", ", "'"& E2 &"'", ", ", "'"& F2 &"'", ");")
+
+
+
+------ Vaccination ------
+
+=concatenate("insert into Vaccination(", "LotNo,",	" PatID,",	" VaccinationStatus,", " NoOfDoses,",	" VaccineName,", " BoosterStatus)", " values (", A2, ", ", B2, ", ", "'"& C2 &"'", ", ", D2, ", ","'"& E2 &"'", ", ", "'"& F2 &"'", ");")
+
+
+-----PatinetEncounter ---------
+
+=concatenate("insert into PatientEncounter(", "PatEncID,",	" PatID,",	" HealthCareProviderID,",	" PatEncAdmitDate,", " AdmitType,"," AdmitLocation,"," PatEncDiscDate,", " DiscLocation)", " values (", A2,", ", B2, ", ", C2, ", ", "'"& TEXT(D2, "yyyy-mm-dd") &"'", ", ", "'"& E2 &"'", ", ", "'"& F2 &"'", ", ", "'"& TEXT(G2, "yyyy-mm-dd") &"'", ", ", "'"& H2 &"'", ");")														
+
+-----------------HealthCareProvider----------
+
+=concatenate("insert into HealthCareProvider(", "HealthCareProviderID,", " Designation,", " EmpFirstName,", " EmpLastName,", " EmpContactNo) values (", A2, ", ", "'"& B2 &"'", ", ", "'"& C2 &"'", ", ", "'"& D2 &"'", ", ", E2, ");")	
+
+--------------VitalSigns--------
+=concatenate("insert into VitalSigns(", "PatEncID,", " VitalID,"," StoreTime,"," VitalVal) values (", A2, ", ", B2, ", ", "'"& TEXT(C2, "yyyy-mm-dd") &"'", ", ", D2, ");")	
+
+
+-----VitalSignDetails-------
+=concatenate("insert into VitalSigns(", "PatEncID,", " VitalID,"," StoreTime,"," VitalVal) values (", A2, ", ", B2, ", ", "'"& TEXT(C2, "yyyy-mm-dd") &"'", ", ", D2, ");")	
+
+
+-----LabResults-------
+=concatenate("insert into LabResults(", "PatEncID,", " HealthCareProviderID,"," TestID,"," StoreTime", ValNum) values (", A2, ", ", B2, ", ", C2,", ", "'"& TEXT(D2, "yyyy-mm-dd") &"'", ", ", E2,  ");")	
+
+
+
+------------MedicationDetails----------
+
+=concatenate("insert into MedicationDetails(", ",", " HealthCareProviderID,"," TestID,"," StoreTime", ValNum) values (", A2, ", ", B2, ", ", C2,", ", "'"& TEXT(D2, "yyyy-mm-dd") &"'", ", ", E2,  ");")
+
+
+-----------------Prescription----------
+
+=concatenate("insert into Prescription(", "PrescriptionID,", " MedID,", " PatEncID,", " HealthCareProviderID,", " PrescStartDate,", " PrescEndDate,", " PrescDose,", "PrescQty) values (", A2, ", ", B2, ", ", C2, ", ", D2, ", ", "'"& TEXT(E2, "yyyy-mm-dd") &"'",", ","'"& TEXT(F2, "yyyy-mm-dd") &"'",", ", G2,", ", H2, ");")	
+
+
+-----------Billing---------
+
+=concatenate("insert into Billing(", "BillingID,", " PatEncID,", " PaymentStatus,", " ClaimSanctionAmt) values (", A2, ", ", B2, ", ", "'"& C2 &"'" ,", ", E2, ");")	
